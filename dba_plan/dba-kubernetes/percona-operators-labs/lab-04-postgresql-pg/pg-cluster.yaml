@@ -1,0 +1,109 @@
+apiVersion: postgres-operator.crunchydata.com/v1beta1
+kind: PostgresCluster
+metadata:
+  name: pg-cluster
+spec:
+  image: registry.developers.crunchydata.com/crunchydata/crunchy-postgres:ubi8-15.4-1
+  postgresVersion: 15
+  
+  instances:
+    - name: instance1
+      replicas: 3
+      resources:
+        requests:
+          cpu: 500m
+          memory: 1Gi
+        limits:
+          cpu: 1000m
+          memory: 2Gi
+      dataVolumeClaimSpec:
+        accessModes:
+        - "ReadWriteOnce"
+        resources:
+          requests:
+            storage: 5Gi
+      affinity:
+        podAntiAffinity:
+          preferredDuringSchedulingIgnoredDuringExecution:
+          - weight: 1
+            podAffinityTerm:
+              topologyKey: kubernetes.io/hostname
+              labelSelector:
+                matchLabels:
+                  postgres-operator.crunchydata.com/cluster: pg-cluster
+                  postgres-operator.crunchydata.com/instance-set: instance1
+
+  backups:
+    pgbackrest:
+      image: registry.developers.crunchydata.com/crunchydata/crunchy-pgbackrest:ubi8-2.47-2
+      repos:
+      - name: repo1
+        volume:
+          volumeClaimSpec:
+            accessModes:
+            - "ReadWriteOnce"
+            resources:
+              requests:
+                storage: 5Gi
+      - name: repo2
+        s3:
+          bucket: "my-backup-bucket"
+          endpoint: "s3.amazonaws.com"
+          region: "us-east-1"
+        schedules:
+          full: "0 1 * * 0"
+          differential: "0 1 * * 1-6"
+      configuration:
+      - secret:
+          name: pg-cluster-s3-credentials
+      global:
+        repo1-retention-full: "14"
+        repo2-retention-full: "14"
+        repo1-retention-diff: "7"
+        repo2-retention-diff: "7"
+
+  patroni:
+    dynamicConfiguration:
+      synchronous_mode: true
+      postgresql:
+        parameters:
+          max_connections: 200
+          shared_buffers: 256MB
+          effective_cache_size: 1GB
+          maintenance_work_mem: 64MB
+          checkpoint_completion_target: 0.9
+          wal_buffers: 16MB
+          default_statistics_target: 100
+          random_page_cost: 1.1
+          effective_io_concurrency: 200
+          work_mem: 4MB
+          min_wal_size: 1GB
+          max_wal_size: 4GB
+
+  proxy:
+    pgBouncer:
+      image: registry.developers.crunchydata.com/crunchydata/crunchy-pgbouncer:ubi8-1.20-0
+      replicas: 2
+      resources:
+        requests:
+          cpu: 100m
+          memory: 128Mi
+        limits:
+          cpu: 200m
+          memory: 256Mi
+      affinity:
+        podAntiAffinity:
+          preferredDuringSchedulingIgnoredDuringExecution:
+          - weight: 1
+            podAffinityTerm:
+              topologyKey: kubernetes.io/hostname
+              labelSelector:
+                matchLabels:
+                  postgres-operator.crunchydata.com/cluster: pg-cluster
+                  postgres-operator.crunchydata.com/role: pgbouncer
+
+  users:
+    - name: testuser
+      databases:
+        - lab_test
+      options: "CREATEDB"

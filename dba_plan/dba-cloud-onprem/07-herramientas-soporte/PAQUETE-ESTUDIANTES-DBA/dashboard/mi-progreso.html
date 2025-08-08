@@ -1,0 +1,531 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mi Progreso DBA - Dashboard Personal</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            overflow: hidden;
+        }
+        
+        .header {
+            background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
+            color: white;
+            padding: 30px;
+            text-align: center;
+        }
+        
+        .header h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+        }
+        
+        .header p {
+            font-size: 1.2em;
+            opacity: 0.9;
+        }
+        
+        .dashboard {
+            padding: 30px;
+        }
+        
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+        
+        .stat-card {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            color: white;
+            padding: 25px;
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+        
+        .stat-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .stat-card.completed {
+            background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);
+        }
+        
+        .stat-card.in-progress {
+            background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);
+        }
+        
+        .stat-card.pending {
+            background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);
+        }
+        
+        .stat-card h3 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+        }
+        
+        .stat-card p {
+            font-size: 1.1em;
+            opacity: 0.9;
+        }
+        
+        .progress-section {
+            margin-bottom: 30px;
+        }
+        
+        .progress-section h2 {
+            color: #2c3e50;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        
+        .scenario-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 20px;
+        }
+        
+        .scenario-card {
+            background: #f8f9fa;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+            border-left: 5px solid #ddd;
+        }
+        
+        .scenario-card.completed {
+            border-left-color: #28a745;
+        }
+        
+        .scenario-card.in-progress {
+            border-left-color: #ffc107;
+        }
+        
+        .scenario-card.pending {
+            border-left-color: #6c757d;
+        }
+        
+        .scenario-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+        
+        .scenario-title {
+            font-weight: bold;
+            color: #2c3e50;
+        }
+        
+        .scenario-status {
+            padding: 5px 10px;
+            border-radius: 20px;
+            font-size: 0.8em;
+            font-weight: bold;
+        }
+        
+        .status-completed {
+            background: #d4edda;
+            color: #155724;
+        }
+        
+        .status-in-progress {
+            background: #fff3cd;
+            color: #856404;
+        }
+        
+        .status-pending {
+            background: #e2e3e5;
+            color: #383d41;
+        }
+        
+        .scenario-details {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 10px;
+            font-size: 0.9em;
+            color: #666;
+        }
+        
+        .progress-bar {
+            width: 100%;
+            height: 8px;
+            background: #e9ecef;
+            border-radius: 4px;
+            overflow: hidden;
+            margin-top: 10px;
+        }
+        
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #28a745, #20c997);
+            transition: width 0.3s ease;
+        }
+        
+        .charts-section {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            margin-bottom: 30px;
+        }
+        
+        .chart-container {
+            background: #f8f9fa;
+            padding: 25px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+        }
+        
+        .chart-container h3 {
+            margin-bottom: 20px;
+            color: #2c3e50;
+            text-align: center;
+        }
+        
+        .next-steps {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 25px;
+            border-radius: 10px;
+            text-align: center;
+        }
+        
+        .next-steps h3 {
+            margin-bottom: 15px;
+        }
+        
+        .next-steps p {
+            margin-bottom: 20px;
+            opacity: 0.9;
+        }
+        
+        .btn {
+            display: inline-block;
+            padding: 12px 25px;
+            background: rgba(255,255,255,0.2);
+            color: white;
+            text-decoration: none;
+            border-radius: 25px;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            margin: 0 10px;
+        }
+        
+        .btn:hover {
+            background: rgba(255,255,255,0.3);
+            transform: translateY(-2px);
+        }
+        
+        @media (max-width: 768px) {
+            .charts-section {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🎓 Mi Progreso DBA</h1>
+            <p>Dashboard Personal - Programa Cloud OnPrem Junior</p>
+        </div>
+        
+        <div class="dashboard">
+            <div class="stats-grid">
+                <div class="stat-card completed">
+                    <h3 id="completed-count">3</h3>
+                    <p>Escenarios Completados</p>
+                </div>
+                <div class="stat-card in-progress">
+                    <h3 id="in-progress-count">2</h3>
+                    <p>En Progreso</p>
+                </div>
+                <div class="stat-card pending">
+                    <h3 id="pending-count">10</h3>
+                    <p>Pendientes</p>
+                </div>
+                <div class="stat-card">
+                    <h3 id="avg-score">85</h3>
+                    <p>Puntuación Promedio</p>
+                </div>
+            </div>
+            
+            <div class="charts-section">
+                <div class="chart-container">
+                    <h3>📊 Progreso por Motor de BD</h3>
+                    <canvas id="progressChart"></canvas>
+                </div>
+                <div class="chart-container">
+                    <h3>📈 Evolución de Puntuaciones</h3>
+                    <canvas id="scoresChart"></canvas>
+                </div>
+            </div>
+            
+            <div class="progress-section">
+                <h2>🎯 Estado de Escenarios</h2>
+                <div class="scenario-list" id="scenario-list">
+                    <!-- Los escenarios se cargarán dinámicamente -->
+                </div>
+            </div>
+            
+            <div class="next-steps">
+                <h3>🚀 Próximos Pasos</h3>
+                <p>Continúa tu journey hacia convertirte en DBA experto</p>
+                <a href="#" class="btn" onclick="startNextScenario()">Continuar Escenario</a>
+                <a href="#" class="btn" onclick="viewDetailedReport()">Ver Reporte Detallado</a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Datos simulados del progreso del estudiante
+        const studentProgress = {
+            scenarios: [
+                {
+                    id: 'mysql-performance',
+                    title: 'MySQL Performance Crisis',
+                    engine: 'MySQL',
+                    level: 'Básico',
+                    status: 'completed',
+                    score: 92,
+                    timeSpent: 28,
+                    timeLimit: 30,
+                    completedAt: '2024-08-01'
+                },
+                {
+                    id: 'postgresql-connections',
+                    title: 'PostgreSQL Connection Crisis',
+                    engine: 'PostgreSQL',
+                    level: 'Básico',
+                    status: 'completed',
+                    score: 88,
+                    timeSpent: 23,
+                    timeLimit: 25,
+                    completedAt: '2024-08-02'
+                },
+                {
+                    id: 'mongodb-indexing',
+                    title: 'MongoDB Missing Indexes',
+                    engine: 'MongoDB',
+                    level: 'Básico',
+                    status: 'completed',
+                    score: 75,
+                    timeSpent: 32,
+                    timeLimit: 30,
+                    completedAt: '2024-08-03'
+                },
+                {
+                    id: 'mysql-deadlocks',
+                    title: 'MySQL Deadlocks Crisis',
+                    engine: 'MySQL',
+                    level: 'Intermedio',
+                    status: 'in-progress',
+                    score: 0,
+                    timeSpent: 15,
+                    timeLimit: 45,
+                    startedAt: '2024-08-07'
+                },
+                {
+                    id: 'postgresql-vacuum',
+                    title: 'PostgreSQL VACUUM Problems',
+                    engine: 'PostgreSQL',
+                    level: 'Intermedio',
+                    status: 'in-progress',
+                    score: 0,
+                    timeSpent: 8,
+                    timeLimit: 40,
+                    startedAt: '2024-08-07'
+                }
+            ]
+        };
+
+        // Inicializar dashboard
+        function initDashboard() {
+            updateStats();
+            loadScenarios();
+            createCharts();
+        }
+
+        function updateStats() {
+            const completed = studentProgress.scenarios.filter(s => s.status === 'completed').length;
+            const inProgress = studentProgress.scenarios.filter(s => s.status === 'in-progress').length;
+            const pending = 15 - completed - inProgress;
+            const avgScore = Math.round(
+                studentProgress.scenarios
+                    .filter(s => s.status === 'completed')
+                    .reduce((sum, s) => sum + s.score, 0) / completed
+            );
+
+            document.getElementById('completed-count').textContent = completed;
+            document.getElementById('in-progress-count').textContent = inProgress;
+            document.getElementById('pending-count').textContent = pending;
+            document.getElementById('avg-score').textContent = avgScore || 0;
+        }
+
+        function loadScenarios() {
+            const container = document.getElementById('scenario-list');
+            container.innerHTML = '';
+
+            studentProgress.scenarios.forEach(scenario => {
+                const card = document.createElement('div');
+                card.className = `scenario-card ${scenario.status}`;
+                
+                const progress = scenario.status === 'completed' ? 100 : 
+                                scenario.status === 'in-progress' ? (scenario.timeSpent / scenario.timeLimit) * 100 : 0;
+
+                card.innerHTML = `
+                    <div class="scenario-header">
+                        <div class="scenario-title">${scenario.title}</div>
+                        <div class="scenario-status status-${scenario.status}">
+                            ${getStatusText(scenario.status)}
+                        </div>
+                    </div>
+                    <div class="scenario-details">
+                        <span>🔧 ${scenario.engine}</span>
+                        <span>📊 ${scenario.level}</span>
+                        <span>⏱️ ${scenario.timeLimit} min</span>
+                        ${scenario.status === 'completed' ? `<span>🏆 ${scenario.score} pts</span>` : ''}
+                    </div>
+                    <div class="progress-bar">
+                        <div class="progress-fill" style="width: ${progress}%"></div>
+                    </div>
+                `;
+                
+                container.appendChild(card);
+            });
+        }
+
+        function getStatusText(status) {
+            switch(status) {
+                case 'completed': return '✅ Completado';
+                case 'in-progress': return '🔄 En Progreso';
+                case 'pending': return '⏳ Pendiente';
+                default: return 'Desconocido';
+            }
+        }
+
+        function createCharts() {
+            // Gráfico de progreso por motor
+            const progressCtx = document.getElementById('progressChart').getContext('2d');
+            new Chart(progressCtx, {
+                type: 'doughnut',
+                data: {
+                    labels: ['MySQL', 'PostgreSQL', 'MongoDB'],
+                    datasets: [{
+                        data: [2, 2, 1], // Escenarios completados por motor
+                        backgroundColor: [
+                            '#4facfe',
+                            '#43e97b',
+                            '#fa709a'
+                        ],
+                        borderWidth: 0
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    plugins: {
+                        legend: {
+                            position: 'bottom'
+                        }
+                    }
+                }
+            });
+
+            // Gráfico de evolución de puntuaciones
+            const scoresCtx = document.getElementById('scoresChart').getContext('2d');
+            new Chart(scoresCtx, {
+                type: 'line',
+                data: {
+                    labels: ['Escenario 1', 'Escenario 2', 'Escenario 3'],
+                    datasets: [{
+                        label: 'Puntuación',
+                        data: [92, 88, 75],
+                        borderColor: '#667eea',
+                        backgroundColor: 'rgba(102, 126, 234, 0.1)',
+                        tension: 0.4,
+                        fill: true
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            max: 100
+                        }
+                    }
+                }
+            });
+        }
+
+        function startNextScenario() {
+            const nextScenario = studentProgress.scenarios.find(s => s.status === 'in-progress') ||
+                               studentProgress.scenarios.find(s => s.status === 'pending');
+            
+            if (nextScenario) {
+                alert(`🚀 Iniciando: ${nextScenario.title}\n\nComando:\n./herramientas/gestor-escenarios.sh start ${nextScenario.id}`);
+            } else {
+                alert('🎉 ¡Felicidades! Has completado todos los escenarios disponibles.');
+            }
+        }
+
+        function viewDetailedReport() {
+            const report = `
+📊 REPORTE DETALLADO DE PROGRESO
+
+🎯 Resumen General:
+• Escenarios completados: ${studentProgress.scenarios.filter(s => s.status === 'completed').length}/15
+• Puntuación promedio: ${Math.round(studentProgress.scenarios.filter(s => s.status === 'completed').reduce((sum, s) => sum + s.score, 0) / studentProgress.scenarios.filter(s => s.status === 'completed').length) || 0} puntos
+• Tiempo total invertido: ${studentProgress.scenarios.reduce((sum, s) => sum + s.timeSpent, 0)} minutos
+
+🏆 Mejores Puntuaciones:
+${studentProgress.scenarios
+    .filter(s => s.status === 'completed')
+    .sort((a, b) => b.score - a.score)
+    .slice(0, 3)
+    .map((s, i) => `${i + 1}. ${s.title}: ${s.score} puntos`)
+    .join('\n')}
+
+📈 Próximos Objetivos:
+• Completar escenarios en progreso
+• Mantener puntuación >80 en escenarios avanzados
+• Prepararse para proyecto final
+            `;
+            
+            alert(report);
+        }
+
+        // Auto-refresh cada 30 segundos
+        setInterval(() => {
+            // En una implementación real, aquí se actualizarían los datos desde el servidor
+            console.log('Actualizando datos del progreso...');
+        }, 30000);
+
+        // Inicializar cuando la página cargue
+        document.addEventListener('DOMContentLoaded', initDashboard);
+    </script>
+</body>
+</html>

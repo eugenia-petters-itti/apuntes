@@ -1,0 +1,7 @@
+apiVersion: v1
+kind: Secret
+metadata:
+  name: psmdb-cluster-mongodb-encryption-key
+type: Opaque
+data:
+  encryption-key: UERCQUJZWkVOVEVSUFJJU0VTCg==

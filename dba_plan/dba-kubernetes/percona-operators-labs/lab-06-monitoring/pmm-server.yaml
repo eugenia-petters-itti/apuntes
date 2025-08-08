@@ -1,0 +1,86 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: pmm-server
+  labels:
+    app: pmm-server
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: pmm-server
+  template:
+    metadata:
+      labels:
+        app: pmm-server
+    spec:
+      containers:
+      - name: pmm-server
+        image: percona/pmm-server:2.41.0
+        ports:
+        - containerPort: 80
+          name: http
+        - containerPort: 443
+          name: https
+        env:
+        - name: DISABLE_UPDATES
+          value: "true"
+        - name: METRICS_RESOLUTION
+          value: "1s"
+        - name: METRICS_RETENTION
+          value: "720h"
+        volumeMounts:
+        - name: pmm-data
+          mountPath: /srv
+        resources:
+          requests:
+            memory: 2Gi
+            cpu: 1000m
+          limits:
+            memory: 4Gi
+            cpu: 2000m
+        livenessProbe:
+          httpGet:
+            path: /ping
+            port: 80
+          initialDelaySeconds: 60
+          periodSeconds: 30
+        readinessProbe:
+          httpGet:
+            path: /ping
+            port: 80
+          initialDelaySeconds: 30
+          periodSeconds: 10
+      volumes:
+      - name: pmm-data
+        persistentVolumeClaim:
+          claimName: pmm-server-pvc
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: pmm-server-pvc
+spec:
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 20Gi
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: pmm-server
+  labels:
+    app: pmm-server
+spec:
+  type: ClusterIP
+  ports:
+  - port: 80
+    targetPort: 80
+    name: http
+  - port: 443
+    targetPort: 443
+    name: https
+  selector:
+    app: pmm-server

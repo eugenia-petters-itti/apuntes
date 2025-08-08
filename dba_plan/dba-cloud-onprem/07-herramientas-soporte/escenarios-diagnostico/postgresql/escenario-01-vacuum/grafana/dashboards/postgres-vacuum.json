@@ -1,0 +1,27 @@
+{
+  "dashboard": {
+    "title": "PostgreSQL Vacuum Monitoring",
+    "panels": [
+      {
+        "title": "Dead Tuples",
+        "type": "timeseries",
+        "targets": [
+          {
+            "expr": "postgres_stat_user_tables_n_dead_tup",
+            "legendFormat": "Dead tuples - {{relname}}"
+          }
+        ]
+      },
+      {
+        "title": "Vacuum Operations",
+        "type": "timeseries", 
+        "targets": [
+          {
+            "expr": "rate(postgres_stat_user_tables_vacuum_count[5m])",
+            "legendFormat": "Vacuum rate - {{relname}}"
+          }
+        ]
+      }
+    ]
+  }
+}

@@ -1,0 +1,101 @@
+apiVersion: pxc.percona.com/v1
+kind: PerconaXtraDBCluster
+metadata:
+  name: pxc-cluster
+  finalizers:
+    - delete-pxc-pods-in-order
+spec:
+  secretsName: pxc-cluster-secrets
+  versionServiceEndpoint: https://check.percona.com
+  crVersion: 1.14.0
+  pxc:
+    size: 3
+    image: percona/percona-xtradb-cluster:8.0.35-27.1
+    autoRecovery: true
+    resources:
+      requests:
+        memory: 1G
+        cpu: 600m
+      limits:
+        memory: 1G
+        cpu: "1"
+    volumeSpec:
+      persistentVolumeClaim:
+        resources:
+          requests:
+            storage: 6Gi
+    affinity:
+      antiAffinityTopologyKey: "kubernetes.io/hostname"
+    podDisruptionBudget:
+      maxUnavailable: 1
+    configuration: |
+      [mysqld]
+      wsrep_provider_options="debug=1;gcache.size=1G"
+      wsrep_debug=1
+      wsrep_cluster_name=pxc-cluster
+      binlog_format=ROW
+      default_storage_engine=InnoDB
+      innodb_autoinc_lock_mode=2
+      innodb_locks_unsafe_for_binlog=1
+      max_connections=350
+      open_files_limit=65535
+
+  haproxy:
+    enabled: true
+    size: 3
+    image: percona/percona-xtradb-cluster-operator:1.14.0-haproxy
+    resources:
+      requests:
+        memory: 1G
+        cpu: 600m
+      limits:
+        memory: 1G
+        cpu: "1"
+    affinity:
+      antiAffinityTopologyKey: "kubernetes.io/hostname"
+    podDisruptionBudget:
+      maxUnavailable: 1
+
+  proxysql:
+    enabled: true
+    size: 3
+    image: percona/percona-xtradb-cluster-operator:1.14.0-proxysql
+    resources:
+      requests:
+        memory: 1G
+        cpu: 600m
+      limits:
+        memory: 1G
+        cpu: "1"
+    volumeSpec:
+      persistentVolumeClaim:
+        resources:
+          requests:
+            storage: 2Gi
+    affinity:
+      antiAffinityTopologyKey: "kubernetes.io/hostname"
+    podDisruptionBudget:
+      maxUnavailable: 1
+
+  pmm:
+    enabled: false
+    image: percona/pmm-client:2.41.0
+    serverHost: monitoring-service
+
+  backup:
+    image: percona/percona-xtradb-cluster-operator:1.14.0-pxc8.0-backup
+    pitr:
+      enabled: false
+    storages:
+      s3-us-west:
+        type: s3
+        verifyTLS: true
+        s3:
+          bucket: "my-backup-bucket"
+          credentialsSecret: "my-cluster-s3-credentials"
+          region: "us-west-2"
+    schedule:
+      - name: "daily-backup"
+        schedule: "0 0 * * *"
+        keep: 5
+        storageName: s3-us-west

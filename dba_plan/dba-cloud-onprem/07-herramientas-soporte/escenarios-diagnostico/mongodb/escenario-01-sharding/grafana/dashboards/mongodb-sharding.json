@@ -1,0 +1,27 @@
+{
+  "dashboard": {
+    "title": "MongoDB Sharding Monitoring",
+    "panels": [
+      {
+        "title": "Shard Distribution",
+        "type": "piechart",
+        "targets": [
+          {
+            "expr": "mongodb_mongos_sharding_chunks_total",
+            "legendFormat": "Chunks - {{shard}}"
+          }
+        ]
+      },
+      {
+        "title": "Balancer Status",
+        "type": "stat",
+        "targets": [
+          {
+            "expr": "mongodb_mongos_sharding_balancer_enabled",
+            "legendFormat": "Balancer Enabled"
+          }
+        ]
+      }
+    ]
+  }
+}

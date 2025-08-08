@@ -1,0 +1,26 @@
+{
+  "nombre": "PAQUETE-ESTUDIANTES-DBA",
+  "version": "1.0.0",
+  "descripcion": "Paquete completo para estudiantes del programa DBA Cloud OnPrem Junior",
+  "autor": "Programa DBA Cloud OnPrem Junior",
+  "fecha_creacion": "2024-08-07",
+  "contenido": {
+    "escenarios": 15,
+    "motores_bd": ["MySQL", "PostgreSQL", "MongoDB"],
+    "herramientas": 4,
+    "documentacion": "Completa",
+    "certificacion": "Incluida"
+  },
+  "requisitos": {
+    "docker": ">=20.0",
+    "docker_compose": ">=1.29",
+    "ram_minima": "8GB",
+    "espacio_disco": "50GB"
+  },
+  "soporte": {
+    "documentacion": "README.md",
+    "inicio_rapido": "INICIO-RAPIDO.md",
+    "instalacion": "INSTALACION-REQUISITOS.md",
+    "plan_estudio": "PLAN-ESTUDIO-5-SEMANAS.md"
+  }
+}

@@ -1,0 +1,139 @@
+# ============================================================================
+# DBA TRAINING SYSTEM - TERRAFORM VARIABLES EXAMPLE
+# ============================================================================
+# Archivo de ejemplo para configurar variables de Terraform
+# Copiar a terraform.tfvars y personalizar según necesidades
+# ============================================================================
+
+# ============================================================================
+# GENERAL CONFIGURATION
+# ============================================================================
+
+project_name = "dba-training-system"
+environment  = "training"
+owner        = "DBA-Training-Team"
+aws_region   = "us-east-1"
+
+# ============================================================================
+# NETWORK CONFIGURATION
+# ============================================================================
+
+vpc_cidr             = "10.0.0.0/16"
+enable_nat_gateway   = true
+enable_vpn_gateway   = false
+enable_dns_hostnames = true
+enable_dns_support   = true
+
+# ============================================================================
+# EC2 CONFIGURATION
+# ============================================================================
+
+key_name                = "dba-training-key"  # MUST exist in AWS
+bastion_instance_type   = "t3.medium"
+student_instance_type   = "t3.small"
+max_students           = 20
+
+# ============================================================================
+# DATABASE CONFIGURATION
+# ============================================================================
+
+db_instance_class                        = "db.t3.micro"
+db_allocated_storage                     = 20
+db_max_allocated_storage                 = 100
+db_backup_retention_period               = 7
+db_backup_window                         = "03:00-04:00"
+db_maintenance_window                    = "sun:04:00-sun:05:00"
+enable_performance_insights              = true
+performance_insights_retention_period    = 7
+
+# ============================================================================
+# DOCUMENTDB CONFIGURATION
+# ============================================================================
+
+documentdb_cluster_size             = 1
+documentdb_instance_class           = "db.t3.medium"
+documentdb_backup_retention_period = 5
+
+# ============================================================================
+# MONITORING CONFIGURATION
+# ============================================================================
+
+enable_cloudwatch_logs    = true
+log_retention_days        = 14
+enable_detailed_monitoring = true
+enable_grafana            = true
+enable_prometheus         = true
+
+# ============================================================================
+# SECURITY CONFIGURATION
+# ============================================================================
+
+# IMPORTANT: Restrict this to your IP range in production
+allowed_cidr_blocks = ["0.0.0.0/0"]
+
+enable_encryption_at_rest    = true
+enable_encryption_in_transit = true
+enable_deletion_protection   = false  # Set to true for production
+
+# ============================================================================
+# TRAINING SPECIFIC CONFIGURATION
+# ============================================================================
+
+training_scenarios = [
+  "mysql-deadlock",
+  "mysql-performance",
+  "mysql-replication",
+  "mysql-backup-recovery",
+  "mysql-connection-exhaustion",
+  "postgres-vacuum",
+  "postgres-index-bloat",
+  "postgres-connection-pooling",
+  "postgres-query-optimization",
+  "postgres-partition-management",
+  "mongodb-sharding",
+  "mongodb-replica-set",
+  "mongodb-performance",
+  "mongodb-aggregation",
+  "mongodb-index-optimization"
+]
+
+enable_scenario_automation = true
+scenario_reset_schedule    = "0 2 * * *"  # Daily at 2 AM UTC
+
+# ============================================================================
+# COST OPTIMIZATION
+# ============================================================================
+
+enable_spot_instances   = false
+auto_shutdown_schedule  = "0 22 * * *"    # Daily at 10 PM UTC
+auto_startup_schedule   = "0 6 * * 1-5"   # Weekdays at 6 AM UTC
+enable_auto_scaling     = true
+
+# ============================================================================
+# BACKUP AND DISASTER RECOVERY
+# ============================================================================
+
+enable_cross_region_backup = false
+backup_region             = "us-west-2"
+snapshot_schedule         = "0 1 * * *"  # Daily at 1 AM UTC
+
+# ============================================================================
+# DEVELOPMENT AND TESTING
+# ============================================================================
+
+enable_debug_mode          = false
+create_test_data           = true
+enable_scenario_validation = true
+
+# ============================================================================
+# ADDITIONAL TAGS
+# ============================================================================
+
+additional_tags = {
+  Department   = "IT-Training"
+  CostCenter   = "Education"
+  Contact      = "dba-training@company.com"
+  Backup       = "Required"
+  Monitoring   = "Enhanced"
+  Compliance   = "Educational"
+}

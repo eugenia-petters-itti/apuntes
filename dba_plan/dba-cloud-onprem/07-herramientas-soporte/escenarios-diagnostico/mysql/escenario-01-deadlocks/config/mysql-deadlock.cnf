@@ -1,0 +1,133 @@
+# MySQL Configuration for Deadlock Training Scenario
+# Optimized to create realistic deadlock conditions for educational purposes
+
+[mysqld]
+# Basic server configuration
+server-id = 1
+bind-address = 0.0.0.0
+port = 3306
+socket = /var/run/mysqld/mysqld.sock
+datadir = /var/lib/mysql
+tmpdir = /tmp
+
+# Character set and collation
+character-set-server = utf8mb4
+collation-server = utf8mb4_unicode_ci
+
+# Connection settings
+max_connections = 200
+max_connect_errors = 1000
+connect_timeout = 60
+wait_timeout = 28800
+interactive_timeout = 28800
+
+# InnoDB Configuration - Optimized for deadlock scenarios
+default-storage-engine = InnoDB
+
+# Buffer pool settings (smaller to increase contention)
+innodb_buffer_pool_size = 256M
+innodb_buffer_pool_instances = 1
+
+# Lock and deadlock settings
+innodb_lock_wait_timeout = 10
+innodb_deadlock_detect = ON
+innodb_print_all_deadlocks = ON
+innodb_rollback_on_timeout = ON
+
+# Transaction isolation (use REPEATABLE READ to increase deadlock probability)
+transaction-isolation = REPEATABLE-READ
+
+# Log settings for deadlock analysis
+innodb_status_output = ON
+innodb_status_output_locks = ON
+
+# Reduce checkpoint frequency to increase lock contention
+innodb_log_file_size = 64M
+innodb_log_files_in_group = 2
+innodb_log_buffer_size = 16M
+innodb_flush_log_at_trx_commit = 1
+
+# Thread and concurrency settings
+innodb_thread_concurrency = 8
+innodb_read_io_threads = 4
+innodb_write_io_threads = 4
+
+# Reduce adaptive hash index to increase lock contention
+innodb_adaptive_hash_index = OFF
+
+# Page size (smaller pages can increase contention)
+innodb_page_size = 16K
+
+# Purge settings
+innodb_purge_threads = 1
+innodb_purge_batch_size = 20
+
+# Logging configuration
+log-error = /var/log/mysql/error.log
+general_log = 1
+general_log_file = /var/log/mysql/general.log
+slow_query_log = 1
+slow_query_log_file = /var/log/mysql/slow.log
+long_query_time = 1
+
+# Binary logging (for replication scenarios)
+log-bin = mysql-bin
+binlog_format = ROW
+expire_logs_days = 7
+max_binlog_size = 100M
+
+# Performance Schema (for monitoring)
+performance_schema = ON
+performance-schema-instrument = 'wait/lock/table/sql/handler=ON'
+performance-schema-instrument = 'wait/lock/metadata/sql/mdl=ON'
+performance-schema-consumer-events-waits-current = ON
+performance-schema-consumer-events-waits-history = ON
+performance-schema-consumer-events-waits-history-long = ON
+
+# Query cache (disabled for better deadlock simulation)
+query_cache_type = 0
+query_cache_size = 0
+
+# Table cache
+table_open_cache = 400
+table_definition_cache = 400
+
+# Sort and join settings
+sort_buffer_size = 2M
+join_buffer_size = 2M
+read_buffer_size = 1M
+read_rnd_buffer_size = 2M
+
+# MyISAM settings (for system tables)
+key_buffer_size = 32M
+myisam_sort_buffer_size = 64M
+
+# Network settings
+max_allowed_packet = 64M
+net_buffer_length = 32K
+
+# Security settings
+local-infile = 0
+skip-show-database
+
+# SQL Mode (strict mode for better error detection)
+sql_mode = STRICT_TRANS_TABLES,ERROR_FOR_DIVISION_BY_ZERO,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION
+
+[mysql]
+default-character-set = utf8mb4
+
+[client]
+default-character-set = utf8mb4
+port = 3306
+socket = /var/run/mysqld/mysqld.sock
+
+[mysqldump]
+quick
+quote-names
+max_allowed_packet = 64M
+
+[isamchk]
+key_buffer_size = 32M
+sort_buffer_size = 32M
+read_buffer = 8M
+write_buffer = 8M

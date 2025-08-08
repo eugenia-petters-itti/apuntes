@@ -1,0 +1,19 @@
+============================================================================
+🔍 VALIDACIÓN DE FUNCIONALIDAD - ESCENARIOS DE DIAGNÓSTICO
+============================================================================
+Validando funcionalidad completa de todos los escenarios
+Log: /Users/epetters/Documents/mcp-visual/dba-cloud-onprem-junior/07-herramientas-soporte/scripts-utilitarios/validation-20250808-131846.log
+============================================================================
+[0;34mℹ️ Verificando prerrequisitos del sistema...[0m
+[0;32m✅ Docker está instalado[0m
+[0;32m✅ Docker daemon está corriendo[0m
+[0;32m✅ Docker Compose está instalado[0m
+[0;32m✅ Python 3 está instalado[0m
+[0;34mℹ️ Verificando puertos disponibles...[0m
+[0;32m✅ Puerto 3306 está disponible[0m
+[0;32m✅ Puerto 5432 está disponible[0m
+[0;32m✅ Puerto 27017 está disponible[0m
+[0;32m✅ Puerto 3000 está disponible[0m
+[0;32m✅ Puerto 9090 está disponible[0m
+[0;32m✅ Puerto 9104 está disponible[0m
+[0;31m❌ Directorio de escenarios no encontrado: /Users/epetters/Documents/mcp-visual/dba-cloud-onprem-junior/07-herramientas-soporte/scripts-utilitarios/escenarios-diagnostico[0m

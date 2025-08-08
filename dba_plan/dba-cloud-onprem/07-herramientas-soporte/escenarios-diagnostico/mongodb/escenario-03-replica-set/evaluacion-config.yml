@@ -1,0 +1,21 @@
+# Configuración de evaluación para escenario-03-replica-set
+evaluation:
+  name: "escenario-03-replica-set"
+  description: "Evaluación automática del escenario escenario-03-replica-set"
+  max_score: 100
+  
+  criteria:
+    - name: "Identificación del problema"
+      weight: 30
+      
+    - name: "Implementación de solución"
+      weight: 40
+      
+    - name: "Verificación de resultados"
+      weight: 20
+      
+    - name: "Documentación"
+      weight: 10
+
+  time_limit: 60
+  attempts_allowed: 3

@@ -1,0 +1,21 @@
+# Configuración de evaluación para escenario-04-aggregation
+evaluation:
+  name: "escenario-04-aggregation"
+  description: "Evaluación automática del escenario escenario-04-aggregation"
+  max_score: 100
+  
+  criteria:
+    - name: "Identificación del problema"
+      weight: 30
+      
+    - name: "Implementación de solución"
+      weight: 40
+      
+    - name: "Verificación de resultados"
+      weight: 20
+      
+    - name: "Documentación"
+      weight: 10
+
+  time_limit: 60
+  attempts_allowed: 3
