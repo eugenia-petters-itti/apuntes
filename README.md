@@ -206,19 +206,6 @@ dba-cloud-onprem/
 - **Service Mesh:** Istio básico
 
 ---
-
-## 📊 Comparación de Carreras
-
-| Aspecto | DBA Tradicional | DBA Moderno | DBRE |
-|---------|----------------|-------------|------|
-| **Salario Promedio** | $75K - $95K | $95K - $120K | $120K - $220K+ |
-| **Crecimiento Anual** | -5% (declive) | +15% | +45% |
-| **Habilidades Clave** | SQL, Backups | SQL + Python + Terraform | SRE + Observabilidad + Chaos Engineering |
-| **Enfoque** | Reactivo | Proactivo | Preventivo |
-| **Futuro** | Obsolescencia | Estable | Alta demanda |
-
----
-
 ## 🚀 Quick Start
 
 ### 1. Evaluación Inicial
