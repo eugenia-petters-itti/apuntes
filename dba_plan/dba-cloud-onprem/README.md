@@ -1,4 +1,4 @@
-# DBA Cloud OnPrem Junior - Programa Completo de Capacitación
+# DBA Cloud OnPrem - Programa Completo de Capacitación
 ## Estructura Organizada de Materiales de Entrenamiento
 
 ### 📁 Estructura de Carpetas

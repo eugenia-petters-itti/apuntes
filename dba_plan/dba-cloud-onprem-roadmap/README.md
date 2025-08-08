@@ -461,6 +461,5 @@ Un DBA moderno que debe manejar:
 
 ---
 
-**¡Tu carrera como DBA Cloud OnPrem AWS comienza aquí!** 🚀
 
 *Roadmap actualizado - Agosto 2025*
