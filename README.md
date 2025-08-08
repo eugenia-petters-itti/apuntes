@@ -256,37 +256,6 @@ terraform plan
 - "Database Reliability Engineering" - O'Reilly
 - "Site Reliability Engineering" - Google
 
-### Comunidades
-- AWS User Groups
-- CNCF Community
-- SREcon Conferences
-- Database Reliability Engineering Slack
-
----
-
-## 🎯 Próximos Pasos
-
-1. **Evalúa tu nivel actual** usando las guías de autoevaluación
-2. **Elige tu camino:** DBA tradicional vs DBRE (recomendado)
-3. **Configura tu lab personal** con AWS free tier
-4. **Comienza con el roadmap** correspondiente a tu nivel
-5. **Únete a las comunidades** para networking y soporte
-
----
-
-## 📞 Soporte y Contribuciones
-
-Este repositorio es un recurso vivo que se actualiza constantemente con las últimas tendencias y mejores prácticas en administración de bases de datos.
-
-### Estructura de Contribución
-- Cada directorio incluye su propio README con instrucciones específicas
-- Scripts de verificación y troubleshooting incluidos
-- Casos de estudio reales para referencia
-- Documentación completa para cada tecnología
-
-### Contacto
-Para preguntas específicas sobre algún programa o sugerencias de mejora, revisa la documentación específica de cada directorio.
-
 ---
 
 
