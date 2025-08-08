@@ -3,7 +3,7 @@ version: '3.8'
 services:
   mysql-db:
     image: mysql:8.0
-    container_name: escenario-01-deadlocks-mysql
+    container_name: escenario-mysql
     environment:
       MYSQL_ROOT_PASSWORD: dba2024!
       MYSQL_DATABASE: training_db
@@ -18,7 +18,7 @@ services:
 
   simulator:
     build: ./simuladores
-    container_name: escenario-01-deadlocks-simulator
+    container_name: escenario-simulator
     depends_on:
       - mysql-db
     environment:
@@ -26,6 +26,47 @@ services:
       DB_USER: app_user
       DB_PASS: app_pass
       DB_NAME: training_db
+    networks:
+      - db-network
+
+  prometheus:
+    image: prom/prometheus:latest
+    container_name: prometheus
+    ports:
+      - "9090:9090"
+    volumes:
+      - ./prometheus:/etc/prometheus
+    command:
+      - '--config.file=/etc/prometheus/prometheus.yml'
+      - '--storage.tsdb.path=/prometheus'
+      - '--web.console.libraries=/etc/prometheus/console_libraries'
+      - '--web.console.templates=/etc/prometheus/consoles'
+      - '--web.enable-lifecycle'
+    networks:
+      - db-network
+
+  grafana:
+    image: grafana/grafana:latest
+    container_name: grafana
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./grafana/datasources:/etc/grafana/provisioning/datasources
+      - ./grafana/dashboards:/etc/grafana/provisioning/dashboards
+    environment:
+      - GF_SECURITY_ADMIN_PASSWORD=admin123
+    networks:
+      - db-network
+
+  mysql-exporter:
+    image: prom/mysqld-exporter:latest
+    container_name: mysql-exporter
+    ports:
+      - "9104:9104"
+    environment:
+      - DATA_SOURCE_NAME=app_user:app_pass@(mysql-db:3306)/training_db
+    depends_on:
+      - mysql-db
     networks:
       - db-network
 

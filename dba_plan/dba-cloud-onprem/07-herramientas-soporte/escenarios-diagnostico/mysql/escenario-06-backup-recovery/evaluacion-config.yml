@@ -1,0 +1,29 @@
+scenario: "backup-recovery"
+max_score: 150
+time_limit: 3600  # 60 minutes
+
+evaluation_criteria:
+  - name: "Database Restoration"
+    weight: 30
+    description: "Successfully restore database from backup"
+    
+  - name: "Data Integrity"
+    weight: 25
+    description: "Verify all data is intact after recovery"
+    
+  - name: "Binary Log Recovery"
+    weight: 25
+    description: "Apply binary logs to recover lost transactions"
+    
+  - name: "Performance Verification"
+    weight: 10
+    description: "Ensure database performance is restored"
+    
+  - name: "Documentation"
+    weight: 10
+    description: "Document recovery process and lessons learned"
+
+hints:
+  - "Check available backups in /backup directory"
+  - "Use binary logs for point-in-time recovery"
+  - "Verify data integrity after restoration"

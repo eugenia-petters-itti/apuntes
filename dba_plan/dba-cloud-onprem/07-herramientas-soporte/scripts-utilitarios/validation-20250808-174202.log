@@ -1,0 +1,377 @@
+============================================================================
+🔍 VALIDACIÓN DE FUNCIONALIDAD - ESCENARIOS DE DIAGNÓSTICO
+============================================================================
+Validando funcionalidad completa de todos los escenarios
+Log: /Users/epetters/Documents/GitHub/itti-platform/apuntes/dba_plan/dba-cloud-onprem/07-herramientas-soporte/scripts-utilitarios/validation-20250808-174202.log
+============================================================================
+[0;34mℹ️ Verificando prerrequisitos del sistema...[0m
+[0;32m✅ Docker está instalado[0m
+[0;32m✅ Docker daemon está corriendo[0m
+[0;32m✅ Docker Compose está instalado[0m
+[0;32m✅ Python 3 está instalado[0m
+[0;34mℹ️ Verificando puertos disponibles...[0m
+[0;32m✅ Puerto 3306 está disponible[0m
+[0;32m✅ Puerto 5432 está disponible[0m
+[0;32m✅ Puerto 27017 está disponible[0m
+[0;32m✅ Puerto 3000 está disponible[0m
+[0;32m✅ Puerto 9090 está disponible[0m
+[0;32m✅ Puerto 9104 está disponible[0m
+[0;34mℹ️ Validando escenarios de mysql...[0m
+[0;34mℹ️ Validando: mysql/escenario-01-deadlocks[0m
+[0;34mℹ️ Validando estructura de escenario-01-deadlocks...[0m
+[0;32m✅   ✓ docker-compose.yml existe[0m
+[0;32m✅   ✓ simuladores/Dockerfile existe[0m
+[0;32m✅   ✓ simuladores/requirements.txt existe[0m
+[0;32m✅   ✓ init-scripts existe[0m
+[0;32m✅   ✓ prometheus/prometheus.yml existe[0m
+[0;32m✅   ✓ problema-descripcion.md existe[0m
+[0;32m✅   ✓ solucion-guia.md existe[0m
+[0;32m✅   ✓ evaluacion-config.yml existe[0m
+[0;34mℹ️ Probando Docker Compose para escenario-01-deadlocks...[0m
+[0;32m✅   ✓ docker-compose.yml es válido[0m
+[0;31m❌   ✗ Error construyendo imágenes Docker[0m
+[0;34mℹ️ Probando funcionalidad del simulador para escenario-01-deadlocks...[0m
+[0;32m✅   ✓ Encontrados        3 archivos Python[0m
+[0;32m✅     ✓ deadlock-simulator.py: sintaxis válida[0m
+[0;32m✅     ✓ main_simulator.py: sintaxis válida[0m
+[0;32m✅     ✓ report_simulator.py: sintaxis válida[0m
+[0;32m✅   ✓ Todos los archivos Python tienen sintaxis válida[0m
+[0;34mℹ️ Validando configuración de monitoreo para escenario-01-deadlocks...[0m
+[0;31m❌   ✗ Configuración de Prometheus tiene errores[0m
+[0;32m✅   ✓ Directorio de datasources de Grafana existe[0m
+[0;31m❌ ❌ mysql/escenario-01-deadlocks: FALLÓ 2 validaciones[0m
+----------------------------------------
+[0;34mℹ️ Validando: mysql/escenario-02-performance[0m
+[0;34mℹ️ Validando estructura de escenario-02-performance...[0m
+[0;32m✅   ✓ docker-compose.yml existe[0m
+[0;32m✅   ✓ simuladores/Dockerfile existe[0m
+[0;32m✅   ✓ simuladores/requirements.txt existe[0m
+[0;32m✅   ✓ init-scripts existe[0m
+[0;32m✅   ✓ prometheus/prometheus.yml existe[0m
+[0;32m✅   ✓ problema-descripcion.md existe[0m
+[0;32m✅   ✓ solucion-guia.md existe[0m
+[0;32m✅   ✓ evaluacion-config.yml existe[0m
+[0;34mℹ️ Probando Docker Compose para escenario-02-performance...[0m
+[0;32m✅   ✓ docker-compose.yml es válido[0m
+[0;31m❌   ✗ Error construyendo imágenes Docker[0m
+[0;34mℹ️ Probando funcionalidad del simulador para escenario-02-performance...[0m
+[0;32m✅   ✓ Encontrados        1 archivos Python[0m
+[0;32m✅     ✓ performance_simulator.py: sintaxis válida[0m
+[0;32m✅   ✓ Todos los archivos Python tienen sintaxis válida[0m
+[0;34mℹ️ Validando configuración de monitoreo para escenario-02-performance...[0m
+[0;31m❌   ✗ Configuración de Prometheus tiene errores[0m
+[0;32m✅   ✓ Directorio de datasources de Grafana existe[0m
+[0;31m❌ ❌ mysql/escenario-02-performance: FALLÓ 2 validaciones[0m
+----------------------------------------
+[0;34mℹ️ Validando: mysql/escenario-03-replication[0m
+[0;34mℹ️ Validando estructura de escenario-03-replication...[0m
+[0;32m✅   ✓ docker-compose.yml existe[0m
+[0;32m✅   ✓ simuladores/Dockerfile existe[0m
+[0;32m✅   ✓ simuladores/requirements.txt existe[0m
+[0;32m✅   ✓ init-scripts existe[0m
+[0;32m✅   ✓ prometheus/prometheus.yml existe[0m
+[0;32m✅   ✓ problema-descripcion.md existe[0m
+[0;32m✅   ✓ solucion-guia.md existe[0m
+[0;32m✅   ✓ evaluacion-config.yml existe[0m
+[0;34mℹ️ Probando Docker Compose para escenario-03-replication...[0m
+[0;32m✅   ✓ docker-compose.yml es válido[0m
+[0;31m❌   ✗ Error construyendo imágenes Docker[0m
+[0;34mℹ️ Probando funcionalidad del simulador para escenario-03-replication...[0m
+[0;32m✅   ✓ Encontrados        1 archivos Python[0m
+[0;32m✅     ✓ basic_simulator.py: sintaxis válida[0m
+[0;32m✅   ✓ Todos los archivos Python tienen sintaxis válida[0m
+[0;34mℹ️ Validando configuración de monitoreo para escenario-03-replication...[0m
+[0;31m❌   ✗ Configuración de Prometheus tiene errores[0m
+[0;32m✅   ✓ Directorio de datasources de Grafana existe[0m
+[0;31m❌ ❌ mysql/escenario-03-replication: FALLÓ 2 validaciones[0m
+----------------------------------------
+[0;34mℹ️ Validando: mysql/escenario-04-corruption[0m
+[0;34mℹ️ Validando estructura de escenario-04-corruption...[0m
+[0;32m✅   ✓ docker-compose.yml existe[0m
+[0;32m✅   ✓ simuladores/Dockerfile existe[0m
+[0;32m✅   ✓ simuladores/requirements.txt existe[0m
+[0;32m✅   ✓ init-scripts existe[0m
+[0;32m✅   ✓ prometheus/prometheus.yml existe[0m
+[0;32m✅   ✓ problema-descripcion.md existe[0m
+[0;32m✅   ✓ solucion-guia.md existe[0m
+[0;32m✅   ✓ evaluacion-config.yml existe[0m
+[0;34mℹ️ Probando Docker Compose para escenario-04-corruption...[0m
+[0;32m✅   ✓ docker-compose.yml es válido[0m
+[0;31m❌   ✗ Error construyendo imágenes Docker[0m
+[0;34mℹ️ Probando funcionalidad del simulador para escenario-04-corruption...[0m
+[0;32m✅   ✓ Encontrados        1 archivos Python[0m
+[0;32m✅     ✓ basic_simulator.py: sintaxis válida[0m
+[0;32m✅   ✓ Todos los archivos Python tienen sintaxis válida[0m
+[0;34mℹ️ Validando configuración de monitoreo para escenario-04-corruption...[0m
+[0;31m❌   ✗ Configuración de Prometheus tiene errores[0m
+[0;32m✅   ✓ Directorio de datasources de Grafana existe[0m
+[0;31m❌ ❌ mysql/escenario-04-corruption: FALLÓ 2 validaciones[0m
+----------------------------------------
+[0;34mℹ️ Validando: mysql/escenario-05-memory[0m
+[0;34mℹ️ Validando estructura de escenario-05-memory...[0m
+[0;32m✅   ✓ docker-compose.yml existe[0m
+[0;32m✅   ✓ simuladores/Dockerfile existe[0m
+[0;32m✅   ✓ simuladores/requirements.txt existe[0m
+[0;32m✅   ✓ init-scripts existe[0m
+[0;32m✅   ✓ prometheus/prometheus.yml existe[0m
+[0;32m✅   ✓ problema-descripcion.md existe[0m
+[0;32m✅   ✓ solucion-guia.md existe[0m
+[0;32m✅   ✓ evaluacion-config.yml existe[0m
+[0;34mℹ️ Probando Docker Compose para escenario-05-memory...[0m
+[0;32m✅   ✓ docker-compose.yml es válido[0m
+[0;31m❌   ✗ Error construyendo imágenes Docker[0m
+[0;34mℹ️ Probando funcionalidad del simulador para escenario-05-memory...[0m
+[0;32m✅   ✓ Encontrados        1 archivos Python[0m
+[0;32m✅     ✓ basic_simulator.py: sintaxis válida[0m
+[0;32m✅   ✓ Todos los archivos Python tienen sintaxis válida[0m
+[0;34mℹ️ Validando configuración de monitoreo para escenario-05-memory...[0m
+[0;31m❌   ✗ Configuración de Prometheus tiene errores[0m
+[0;32m✅   ✓ Directorio de datasources de Grafana existe[0m
+[0;31m❌ ❌ mysql/escenario-05-memory: FALLÓ 2 validaciones[0m
+----------------------------------------
+[0;34mℹ️ Validando escenarios de postgresql...[0m
+[0;34mℹ️ Validando: postgresql/escenario-01-vacuum[0m
+[0;34mℹ️ Validando estructura de escenario-01-vacuum...[0m
+[0;32m✅   ✓ docker-compose.yml existe[0m
+[0;32m✅   ✓ simuladores/Dockerfile existe[0m
+[0;32m✅   ✓ simuladores/requirements.txt existe[0m
+[0;32m✅   ✓ init-scripts existe[0m
+[0;32m✅   ✓ prometheus/prometheus.yml existe[0m
+[0;32m✅   ✓ problema-descripcion.md existe[0m
+[0;32m✅   ✓ solucion-guia.md existe[0m
+[0;32m✅   ✓ evaluacion-config.yml existe[0m
+[0;34mℹ️ Probando Docker Compose para escenario-01-vacuum...[0m
+[0;32m✅   ✓ docker-compose.yml es válido[0m
+[0;31m❌   ✗ Error construyendo imágenes Docker[0m
+[0;34mℹ️ Probando funcionalidad del simulador para escenario-01-vacuum...[0m
+[0;32m✅   ✓ Encontrados        2 archivos Python[0m
+[0;32m✅     ✓ vacuum_simulator.py: sintaxis válida[0m
+[0;32m✅     ✓ vacuum-problem-simulator.py: sintaxis válida[0m
+[0;32m✅   ✓ Todos los archivos Python tienen sintaxis válida[0m
+[0;34mℹ️ Validando configuración de monitoreo para escenario-01-vacuum...[0m
+[0;31m❌   ✗ Configuración de Prometheus tiene errores[0m
+[0;32m✅   ✓ Directorio de datasources de Grafana existe[0m
+[0;31m❌ ❌ postgresql/escenario-01-vacuum: FALLÓ 2 validaciones[0m
+----------------------------------------
+[0;34mℹ️ Validando: postgresql/escenario-02-connections[0m
+[0;34mℹ️ Validando estructura de escenario-02-connections...[0m
+[0;32m✅   ✓ docker-compose.yml existe[0m
+[0;32m✅   ✓ simuladores/Dockerfile existe[0m
+[0;32m✅   ✓ simuladores/requirements.txt existe[0m
+[0;32m✅   ✓ init-scripts existe[0m
+[0;32m✅   ✓ prometheus/prometheus.yml existe[0m
+[0;32m✅   ✓ problema-descripcion.md existe[0m
+[0;32m✅   ✓ solucion-guia.md existe[0m
+[0;32m✅   ✓ evaluacion-config.yml existe[0m
+[0;34mℹ️ Probando Docker Compose para escenario-02-connections...[0m
+[0;32m✅   ✓ docker-compose.yml es válido[0m
+[0;31m❌   ✗ Error construyendo imágenes Docker[0m
+[0;34mℹ️ Probando funcionalidad del simulador para escenario-02-connections...[0m
+[0;32m✅   ✓ Encontrados        1 archivos Python[0m
+[0;32m✅     ✓ basic_simulator.py: sintaxis válida[0m
+[0;32m✅   ✓ Todos los archivos Python tienen sintaxis válida[0m
+[0;34mℹ️ Validando configuración de monitoreo para escenario-02-connections...[0m
+[0;31m❌   ✗ Configuración de Prometheus tiene errores[0m
+[0;32m✅   ✓ Directorio de datasources de Grafana existe[0m
+[0;31m❌ ❌ postgresql/escenario-02-connections: FALLÓ 2 validaciones[0m
+----------------------------------------
+[0;34mℹ️ Validando: postgresql/escenario-03-locks[0m
+[0;34mℹ️ Validando estructura de escenario-03-locks...[0m
+[0;32m✅   ✓ docker-compose.yml existe[0m
+[0;32m✅   ✓ simuladores/Dockerfile existe[0m
+[0;32m✅   ✓ simuladores/requirements.txt existe[0m
+[0;32m✅   ✓ init-scripts existe[0m
+[0;32m✅   ✓ prometheus/prometheus.yml existe[0m
+[0;32m✅   ✓ problema-descripcion.md existe[0m
+[0;32m✅   ✓ solucion-guia.md existe[0m
+[0;32m✅   ✓ evaluacion-config.yml existe[0m
+[0;34mℹ️ Probando Docker Compose para escenario-03-locks...[0m
+[0;32m✅   ✓ docker-compose.yml es válido[0m
+[0;31m❌   ✗ Error construyendo imágenes Docker[0m
+[0;34mℹ️ Probando funcionalidad del simulador para escenario-03-locks...[0m
+[0;32m✅   ✓ Encontrados        1 archivos Python[0m
+[0;32m✅     ✓ basic_simulator.py: sintaxis válida[0m
+[0;32m✅   ✓ Todos los archivos Python tienen sintaxis válida[0m
+[0;34mℹ️ Validando configuración de monitoreo para escenario-03-locks...[0m
+[0;31m❌   ✗ Configuración de Prometheus tiene errores[0m
+[0;32m✅   ✓ Directorio de datasources de Grafana existe[0m
+[0;31m❌ ❌ postgresql/escenario-03-locks: FALLÓ 2 validaciones[0m
+----------------------------------------
+[0;34mℹ️ Validando: postgresql/escenario-04-statistics[0m
+[0;34mℹ️ Validando estructura de escenario-04-statistics...[0m
+[0;32m✅   ✓ docker-compose.yml existe[0m
+[0;32m✅   ✓ simuladores/Dockerfile existe[0m
+[0;32m✅   ✓ simuladores/requirements.txt existe[0m
+[0;32m✅   ✓ init-scripts existe[0m
+[0;32m✅   ✓ prometheus/prometheus.yml existe[0m
+[0;32m✅   ✓ problema-descripcion.md existe[0m
+[0;32m✅   ✓ solucion-guia.md existe[0m
+[0;32m✅   ✓ evaluacion-config.yml existe[0m
+[0;34mℹ️ Probando Docker Compose para escenario-04-statistics...[0m
+[0;32m✅   ✓ docker-compose.yml es válido[0m
+[0;31m❌   ✗ Error construyendo imágenes Docker[0m
+[0;34mℹ️ Probando funcionalidad del simulador para escenario-04-statistics...[0m
+[0;32m✅   ✓ Encontrados        1 archivos Python[0m
+[0;32m✅     ✓ basic_simulator.py: sintaxis válida[0m
+[0;32m✅   ✓ Todos los archivos Python tienen sintaxis válida[0m
+[0;34mℹ️ Validando configuración de monitoreo para escenario-04-statistics...[0m
+[0;31m❌   ✗ Configuración de Prometheus tiene errores[0m
+[0;32m✅   ✓ Directorio de datasources de Grafana existe[0m
+[0;31m❌ ❌ postgresql/escenario-04-statistics: FALLÓ 2 validaciones[0m
+----------------------------------------
+[0;34mℹ️ Validando: postgresql/escenario-05-wal[0m
+[0;34mℹ️ Validando estructura de escenario-05-wal...[0m
+[0;32m✅   ✓ docker-compose.yml existe[0m
+[0;32m✅   ✓ simuladores/Dockerfile existe[0m
+[0;32m✅   ✓ simuladores/requirements.txt existe[0m
+[0;32m✅   ✓ init-scripts existe[0m
+[0;32m✅   ✓ prometheus/prometheus.yml existe[0m
+[0;32m✅   ✓ problema-descripcion.md existe[0m
+[0;32m✅   ✓ solucion-guia.md existe[0m
+[0;32m✅   ✓ evaluacion-config.yml existe[0m
+[0;34mℹ️ Probando Docker Compose para escenario-05-wal...[0m
+[0;32m✅   ✓ docker-compose.yml es válido[0m
+[0;31m❌   ✗ Error construyendo imágenes Docker[0m
+[0;34mℹ️ Probando funcionalidad del simulador para escenario-05-wal...[0m
+[0;32m✅   ✓ Encontrados        1 archivos Python[0m
+[0;32m✅     ✓ basic_simulator.py: sintaxis válida[0m
+[0;32m✅   ✓ Todos los archivos Python tienen sintaxis válida[0m
+[0;34mℹ️ Validando configuración de monitoreo para escenario-05-wal...[0m
+[0;31m❌   ✗ Configuración de Prometheus tiene errores[0m
+[0;32m✅   ✓ Directorio de datasources de Grafana existe[0m
+[0;31m❌ ❌ postgresql/escenario-05-wal: FALLÓ 2 validaciones[0m
+----------------------------------------
+[0;34mℹ️ Validando escenarios de mongodb...[0m
+[0;34mℹ️ Validando: mongodb/escenario-01-sharding[0m
+[0;34mℹ️ Validando estructura de escenario-01-sharding...[0m
+[0;32m✅   ✓ docker-compose.yml existe[0m
+[0;32m✅   ✓ simuladores/Dockerfile existe[0m
+[0;32m✅   ✓ simuladores/requirements.txt existe[0m
+[0;32m✅   ✓ init-scripts existe[0m
+[0;32m✅   ✓ prometheus/prometheus.yml existe[0m
+[0;32m✅   ✓ problema-descripcion.md existe[0m
+[0;32m✅   ✓ solucion-guia.md existe[0m
+[0;32m✅   ✓ evaluacion-config.yml existe[0m
+[0;34mℹ️ Probando Docker Compose para escenario-01-sharding...[0m
+[0;32m✅   ✓ docker-compose.yml es válido[0m
+[0;31m❌   ✗ Error construyendo imágenes Docker[0m
+[0;34mℹ️ Probando funcionalidad del simulador para escenario-01-sharding...[0m
+[0;32m✅   ✓ Encontrados        2 archivos Python[0m
+[0;32m✅     ✓ mongodb-sharding-simulator.py: sintaxis válida[0m
+[0;32m✅     ✓ sharding_simulator.py: sintaxis válida[0m
+[0;32m✅   ✓ Todos los archivos Python tienen sintaxis válida[0m
+[0;34mℹ️ Validando configuración de monitoreo para escenario-01-sharding...[0m
+[0;31m❌   ✗ Configuración de Prometheus tiene errores[0m
+[0;32m✅   ✓ Directorio de datasources de Grafana existe[0m
+[0;31m❌ ❌ mongodb/escenario-01-sharding: FALLÓ 2 validaciones[0m
+----------------------------------------
+[0;34mℹ️ Validando: mongodb/escenario-02-indexing[0m
+[0;34mℹ️ Validando estructura de escenario-02-indexing...[0m
+[0;32m✅   ✓ docker-compose.yml existe[0m
+[0;32m✅   ✓ simuladores/Dockerfile existe[0m
+[0;32m✅   ✓ simuladores/requirements.txt existe[0m
+[0;32m✅   ✓ init-scripts existe[0m
+[0;32m✅   ✓ prometheus/prometheus.yml existe[0m
+[0;32m✅   ✓ problema-descripcion.md existe[0m
+[0;32m✅   ✓ solucion-guia.md existe[0m
+[0;32m✅   ✓ evaluacion-config.yml existe[0m
+[0;34mℹ️ Probando Docker Compose para escenario-02-indexing...[0m
+[0;32m✅   ✓ docker-compose.yml es válido[0m
+[0;31m❌   ✗ Error construyendo imágenes Docker[0m
+[0;34mℹ️ Probando funcionalidad del simulador para escenario-02-indexing...[0m
+[0;32m✅   ✓ Encontrados        1 archivos Python[0m
+[0;32m✅     ✓ basic_simulator.py: sintaxis válida[0m
+[0;32m✅   ✓ Todos los archivos Python tienen sintaxis válida[0m
+[0;34mℹ️ Validando configuración de monitoreo para escenario-02-indexing...[0m
+[0;31m❌   ✗ Configuración de Prometheus tiene errores[0m
+[0;32m✅   ✓ Directorio de datasources de Grafana existe[0m
+[0;31m❌ ❌ mongodb/escenario-02-indexing: FALLÓ 2 validaciones[0m
+----------------------------------------
+[0;34mℹ️ Validando: mongodb/escenario-03-replica-set[0m
+[0;34mℹ️ Validando estructura de escenario-03-replica-set...[0m
+[0;32m✅   ✓ docker-compose.yml existe[0m
+[0;32m✅   ✓ simuladores/Dockerfile existe[0m
+[0;32m✅   ✓ simuladores/requirements.txt existe[0m
+[0;32m✅   ✓ init-scripts existe[0m
+[0;32m✅   ✓ prometheus/prometheus.yml existe[0m
+[0;32m✅   ✓ problema-descripcion.md existe[0m
+[0;32m✅   ✓ solucion-guia.md existe[0m
+[0;32m✅   ✓ evaluacion-config.yml existe[0m
+[0;34mℹ️ Probando Docker Compose para escenario-03-replica-set...[0m
+[0;32m✅   ✓ docker-compose.yml es válido[0m
+[0;31m❌   ✗ Error construyendo imágenes Docker[0m
+[0;34mℹ️ Probando funcionalidad del simulador para escenario-03-replica-set...[0m
+[0;32m✅   ✓ Encontrados        1 archivos Python[0m
+[0;32m✅     ✓ basic_simulator.py: sintaxis válida[0m
+[0;32m✅   ✓ Todos los archivos Python tienen sintaxis válida[0m
+[0;34mℹ️ Validando configuración de monitoreo para escenario-03-replica-set...[0m
+[0;31m❌   ✗ Configuración de Prometheus tiene errores[0m
+[0;32m✅   ✓ Directorio de datasources de Grafana existe[0m
+[0;31m❌ ❌ mongodb/escenario-03-replica-set: FALLÓ 2 validaciones[0m
+----------------------------------------
+[0;34mℹ️ Validando: mongodb/escenario-04-aggregation[0m
+[0;34mℹ️ Validando estructura de escenario-04-aggregation...[0m
+[0;32m✅   ✓ docker-compose.yml existe[0m
+[0;32m✅   ✓ simuladores/Dockerfile existe[0m
+[0;32m✅   ✓ simuladores/requirements.txt existe[0m
+[0;32m✅   ✓ init-scripts existe[0m
+[0;32m✅   ✓ prometheus/prometheus.yml existe[0m
+[0;32m✅   ✓ problema-descripcion.md existe[0m
+[0;32m✅   ✓ solucion-guia.md existe[0m
+[0;32m✅   ✓ evaluacion-config.yml existe[0m
+[0;34mℹ️ Probando Docker Compose para escenario-04-aggregation...[0m
+[0;32m✅   ✓ docker-compose.yml es válido[0m
+[0;31m❌   ✗ Error construyendo imágenes Docker[0m
+[0;34mℹ️ Probando funcionalidad del simulador para escenario-04-aggregation...[0m
+[0;32m✅   ✓ Encontrados        1 archivos Python[0m
+[0;32m✅     ✓ basic_simulator.py: sintaxis válida[0m
+[0;32m✅   ✓ Todos los archivos Python tienen sintaxis válida[0m
+[0;34mℹ️ Validando configuración de monitoreo para escenario-04-aggregation...[0m
+[0;31m❌   ✗ Configuración de Prometheus tiene errores[0m
+[0;32m✅   ✓ Directorio de datasources de Grafana existe[0m
+[0;31m❌ ❌ mongodb/escenario-04-aggregation: FALLÓ 2 validaciones[0m
+----------------------------------------
+[0;34mℹ️ Validando: mongodb/escenario-05-storage[0m
+[0;34mℹ️ Validando estructura de escenario-05-storage...[0m
+[0;32m✅   ✓ docker-compose.yml existe[0m
+[0;32m✅   ✓ simuladores/Dockerfile existe[0m
+[0;32m✅   ✓ simuladores/requirements.txt existe[0m
+[0;32m✅   ✓ init-scripts existe[0m
+[0;32m✅   ✓ prometheus/prometheus.yml existe[0m
+[0;32m✅   ✓ problema-descripcion.md existe[0m
+[0;32m✅   ✓ solucion-guia.md existe[0m
+[0;32m✅   ✓ evaluacion-config.yml existe[0m
+[0;34mℹ️ Probando Docker Compose para escenario-05-storage...[0m
+[0;32m✅   ✓ docker-compose.yml es válido[0m
+[0;31m❌   ✗ Error construyendo imágenes Docker[0m
+[0;34mℹ️ Probando funcionalidad del simulador para escenario-05-storage...[0m
+[0;32m✅   ✓ Encontrados        1 archivos Python[0m
+[0;32m✅     ✓ basic_simulator.py: sintaxis válida[0m
+[0;32m✅   ✓ Todos los archivos Python tienen sintaxis válida[0m
+[0;34mℹ️ Validando configuración de monitoreo para escenario-05-storage...[0m
+[0;31m❌   ✗ Configuración de Prometheus tiene errores[0m
+[0;32m✅   ✓ Directorio de datasources de Grafana existe[0m
+[0;31m❌ ❌ mongodb/escenario-05-storage: FALLÓ 2 validaciones[0m
+----------------------------------------
+[0;34mℹ️ Generando reporte HTML...[0m
+[0;32m✅ Reporte HTML generado: /Users/epetters/Documents/GitHub/itti-platform/apuntes/dba_plan/dba-cloud-onprem/07-herramientas-soporte/scripts-utilitarios/validation-report.html[0m
+
+============================================================================
+📊 RESUMEN FINAL DE VALIDACIÓN
+============================================================================
+Total de escenarios: 15
+Escenarios exitosos: 0
+Escenarios fallidos: 15
+Tasa de éxito: 0%
+
+📄 Reportes generados:
+  - Log detallado: /Users/epetters/Documents/GitHub/itti-platform/apuntes/dba_plan/dba-cloud-onprem/07-herramientas-soporte/scripts-utilitarios/validation-20250808-174202.log
+  - Reporte HTML: /Users/epetters/Documents/GitHub/itti-platform/apuntes/dba_plan/dba-cloud-onprem/07-herramientas-soporte/scripts-utilitarios/validation-report.html
+
+[1;33m⚠️ ⚠️ Algunos escenarios requieren correcciones[0m
+
+🔧 Acciones recomendadas:
+1. Revisar el log detallado para errores específicos
+2. Ejecutar el script de completación: ./completar-escenarios-faltantes.sh
+3. Corregir manualmente los problemas identificados
+4. Volver a ejecutar esta validación

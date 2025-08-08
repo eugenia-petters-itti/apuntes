@@ -1,0 +1,32 @@
+version: '3.8'
+
+services:
+  mongodb:
+    image: mongo:5.0
+    container_name: escenario-05-storage-mongodb
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: admin
+      MONGO_INITDB_ROOT_PASSWORD: dba2024!
+    ports:
+      - "27017:27017"
+    volumes:
+      - ./init-scripts:/docker-entrypoint-initdb.d
+    networks:
+      - db-network
+
+  simulator:
+    build: ./simuladores
+    container_name: escenario-05-storage-simulator
+    depends_on:
+      - mongodb
+    environment:
+      DB_HOST: mongodb
+      DB_USER: app_user
+      DB_PASS: app_pass
+      DB_NAME: training_db
+    networks:
+      - db-network
+
+networks:
+  db-network:
+    driver: bridge

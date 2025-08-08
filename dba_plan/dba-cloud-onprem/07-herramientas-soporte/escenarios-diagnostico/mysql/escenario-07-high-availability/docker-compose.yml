@@ -1,0 +1,88 @@
+version: '3.8'
+
+services:
+  mysql-master:
+    image: mysql:8.0
+    container_name: mysql-master
+    environment:
+      MYSQL_ROOT_PASSWORD: dba2024!
+      MYSQL_DATABASE: training_db
+      MYSQL_USER: app_user
+      MYSQL_PASSWORD: app_pass
+      MYSQL_REPLICATION_USER: repl_user
+      MYSQL_REPLICATION_PASSWORD: repl_pass
+    ports:
+      - "3306:3306"
+    volumes:
+      - ./init-scripts:/docker-entrypoint-initdb.d
+      - ./config/master.cnf:/etc/mysql/conf.d/mysql.cnf
+    networks:
+      - db-network
+
+  mysql-slave1:
+    image: mysql:8.0
+    container_name: mysql-slave1
+    environment:
+      MYSQL_ROOT_PASSWORD: dba2024!
+      MYSQL_DATABASE: training_db
+      MYSQL_USER: app_user
+      MYSQL_PASSWORD: app_pass
+    ports:
+      - "3307:3306"
+    volumes:
+      - ./config/slave.cnf:/etc/mysql/conf.d/mysql.cnf
+    depends_on:
+      - mysql-master
+    networks:
+      - db-network
+
+  mysql-slave2:
+    image: mysql:8.0
+    container_name: mysql-slave2
+    environment:
+      MYSQL_ROOT_PASSWORD: dba2024!
+      MYSQL_DATABASE: training_db
+      MYSQL_USER: app_user
+      MYSQL_PASSWORD: app_pass
+    ports:
+      - "3308:3306"
+    volumes:
+      - ./config/slave.cnf:/etc/mysql/conf.d/mysql.cnf
+    depends_on:
+      - mysql-master
+    networks:
+      - db-network
+
+  haproxy:
+    image: haproxy:2.4
+    container_name: haproxy
+    ports:
+      - "3309:3306"
+      - "8080:8080"
+    volumes:
+      - ./config/haproxy.cfg:/usr/local/etc/haproxy/haproxy.cfg
+    depends_on:
+      - mysql-master
+      - mysql-slave1
+      - mysql-slave2
+    networks:
+      - db-network
+
+  simulator:
+    build: ./simuladores
+    container_name: escenario-simulator
+    depends_on:
+      - mysql-master
+      - mysql-slave1
+      - mysql-slave2
+    environment:
+      DB_HOST: haproxy
+      DB_USER: app_user
+      DB_PASS: app_pass
+      DB_NAME: training_db
+    networks:
+      - db-network
+
+networks:
+  db-network:
+    driver: bridge

@@ -1,0 +1,141 @@
+============================================================================
+🔧 CORRECCIÓN DE ESCENARIOS DE DIAGNÓSTICO
+============================================================================
+Iniciando corrección de problemas identificados
+Log: /Users/epetters/Documents/GitHub/itti-platform/apuntes/dba_plan/dba-cloud-onprem/07-herramientas-soporte/scripts-utilitarios/correccion-20250808-174711.log
+============================================================================
+[0;34mℹ️ Procesando escenarios de mysql[0m
+[0;34mℹ️ Corrigiendo escenario: escenario-01-deadlocks[0m
+[0;34mℹ️ Corrigiendo configuración de Prometheus en /Users/epetters/Documents/GitHub/itti-platform/apuntes/dba_plan/dba-cloud-onprem/07-herramientas-soporte/escenarios-diagnostico/mysql/escenario-01-deadlocks[0m
+[0;32m✅ Configuración de Prometheus corregida[0m
+[0;34mℹ️ Verificando Docker Compose en /Users/epetters/Documents/GitHub/itti-platform/apuntes/dba_plan/dba-cloud-onprem/07-herramientas-soporte/escenarios-diagnostico/mysql/escenario-01-deadlocks[0m
+[0;34mℹ️ Agregando servicios de monitoreo a docker-compose.yml[0m
+[0;32m✅ Servicios de monitoreo agregados[0m
+[0;32m✅ Configuración de Grafana creada[0m
+[0;32m✅ Escenario escenario-01-deadlocks corregido[0m
+[0;34mℹ️ Corrigiendo escenario: escenario-02-performance[0m
+[0;34mℹ️ Corrigiendo configuración de Prometheus en /Users/epetters/Documents/GitHub/itti-platform/apuntes/dba_plan/dba-cloud-onprem/07-herramientas-soporte/escenarios-diagnostico/mysql/escenario-02-performance[0m
+[0;32m✅ Configuración de Prometheus corregida[0m
+[0;34mℹ️ Verificando Docker Compose en /Users/epetters/Documents/GitHub/itti-platform/apuntes/dba_plan/dba-cloud-onprem/07-herramientas-soporte/escenarios-diagnostico/mysql/escenario-02-performance[0m
+[0;34mℹ️ Agregando servicios de monitoreo a docker-compose.yml[0m
+[0;32m✅ Servicios de monitoreo agregados[0m
+[0;32m✅ Configuración de Grafana creada[0m
+[0;32m✅ Escenario escenario-02-performance corregido[0m
+[0;34mℹ️ Corrigiendo escenario: escenario-03-replication[0m
+[0;34mℹ️ Corrigiendo configuración de Prometheus en /Users/epetters/Documents/GitHub/itti-platform/apuntes/dba_plan/dba-cloud-onprem/07-herramientas-soporte/escenarios-diagnostico/mysql/escenario-03-replication[0m
+[0;32m✅ Configuración de Prometheus corregida[0m
+[0;34mℹ️ Verificando Docker Compose en /Users/epetters/Documents/GitHub/itti-platform/apuntes/dba_plan/dba-cloud-onprem/07-herramientas-soporte/escenarios-diagnostico/mysql/escenario-03-replication[0m
+[0;34mℹ️ Agregando servicios de monitoreo a docker-compose.yml[0m
+[0;32m✅ Servicios de monitoreo agregados[0m
+[0;32m✅ Configuración de Grafana creada[0m
+[0;32m✅ Escenario escenario-03-replication corregido[0m
+[0;34mℹ️ Corrigiendo escenario: escenario-04-corruption[0m
+[0;34mℹ️ Corrigiendo configuración de Prometheus en /Users/epetters/Documents/GitHub/itti-platform/apuntes/dba_plan/dba-cloud-onprem/07-herramientas-soporte/escenarios-diagnostico/mysql/escenario-04-corruption[0m
+[0;32m✅ Configuración de Prometheus corregida[0m
+[0;34mℹ️ Verificando Docker Compose en /Users/epetters/Documents/GitHub/itti-platform/apuntes/dba_plan/dba-cloud-onprem/07-herramientas-soporte/escenarios-diagnostico/mysql/escenario-04-corruption[0m
+[0;34mℹ️ Agregando servicios de monitoreo a docker-compose.yml[0m
+[0;32m✅ Servicios de monitoreo agregados[0m
+[0;32m✅ Configuración de Grafana creada[0m
+[0;32m✅ Escenario escenario-04-corruption corregido[0m
+[0;34mℹ️ Corrigiendo escenario: escenario-05-memory[0m
+[0;34mℹ️ Corrigiendo configuración de Prometheus en /Users/epetters/Documents/GitHub/itti-platform/apuntes/dba_plan/dba-cloud-onprem/07-herramientas-soporte/escenarios-diagnostico/mysql/escenario-05-memory[0m
+[0;32m✅ Configuración de Prometheus corregida[0m
+[0;34mℹ️ Verificando Docker Compose en /Users/epetters/Documents/GitHub/itti-platform/apuntes/dba_plan/dba-cloud-onprem/07-herramientas-soporte/escenarios-diagnostico/mysql/escenario-05-memory[0m
+[0;34mℹ️ Agregando servicios de monitoreo a docker-compose.yml[0m
+[0;32m✅ Servicios de monitoreo agregados[0m
+[0;32m✅ Configuración de Grafana creada[0m
+[0;32m✅ Escenario escenario-05-memory corregido[0m
+[0;34mℹ️ Procesando escenarios de postgresql[0m
+[0;34mℹ️ Corrigiendo escenario: escenario-01-vacuum[0m
+[0;34mℹ️ Corrigiendo configuración de Prometheus en /Users/epetters/Documents/GitHub/itti-platform/apuntes/dba_plan/dba-cloud-onprem/07-herramientas-soporte/escenarios-diagnostico/postgresql/escenario-01-vacuum[0m
+[0;32m✅ Configuración de Prometheus corregida[0m
+[0;34mℹ️ Verificando Docker Compose en /Users/epetters/Documents/GitHub/itti-platform/apuntes/dba_plan/dba-cloud-onprem/07-herramientas-soporte/escenarios-diagnostico/postgresql/escenario-01-vacuum[0m
+[0;34mℹ️ Agregando servicios de monitoreo a docker-compose.yml[0m
+[0;32m✅ Servicios de monitoreo agregados[0m
+[0;32m✅ Configuración de Grafana creada[0m
+[0;32m✅ Escenario escenario-01-vacuum corregido[0m
+[0;34mℹ️ Corrigiendo escenario: escenario-02-connections[0m
+[0;34mℹ️ Corrigiendo configuración de Prometheus en /Users/epetters/Documents/GitHub/itti-platform/apuntes/dba_plan/dba-cloud-onprem/07-herramientas-soporte/escenarios-diagnostico/postgresql/escenario-02-connections[0m
+[0;32m✅ Configuración de Prometheus corregida[0m
+[0;34mℹ️ Verificando Docker Compose en /Users/epetters/Documents/GitHub/itti-platform/apuntes/dba_plan/dba-cloud-onprem/07-herramientas-soporte/escenarios-diagnostico/postgresql/escenario-02-connections[0m
+[0;34mℹ️ Agregando servicios de monitoreo a docker-compose.yml[0m
+[0;32m✅ Servicios de monitoreo agregados[0m
+[0;32m✅ Configuración de Grafana creada[0m
+[0;32m✅ Escenario escenario-02-connections corregido[0m
+[0;34mℹ️ Corrigiendo escenario: escenario-03-locks[0m
+[0;34mℹ️ Corrigiendo configuración de Prometheus en /Users/epetters/Documents/GitHub/itti-platform/apuntes/dba_plan/dba-cloud-onprem/07-herramientas-soporte/escenarios-diagnostico/postgresql/escenario-03-locks[0m
+[0;32m✅ Configuración de Prometheus corregida[0m
+[0;34mℹ️ Verificando Docker Compose en /Users/epetters/Documents/GitHub/itti-platform/apuntes/dba_plan/dba-cloud-onprem/07-herramientas-soporte/escenarios-diagnostico/postgresql/escenario-03-locks[0m
+[0;34mℹ️ Agregando servicios de monitoreo a docker-compose.yml[0m
+[0;32m✅ Servicios de monitoreo agregados[0m
+[0;32m✅ Configuración de Grafana creada[0m
+[0;32m✅ Escenario escenario-03-locks corregido[0m
+[0;34mℹ️ Corrigiendo escenario: escenario-04-statistics[0m
+[0;34mℹ️ Corrigiendo configuración de Prometheus en /Users/epetters/Documents/GitHub/itti-platform/apuntes/dba_plan/dba-cloud-onprem/07-herramientas-soporte/escenarios-diagnostico/postgresql/escenario-04-statistics[0m
+[0;32m✅ Configuración de Prometheus corregida[0m
+[0;34mℹ️ Verificando Docker Compose en /Users/epetters/Documents/GitHub/itti-platform/apuntes/dba_plan/dba-cloud-onprem/07-herramientas-soporte/escenarios-diagnostico/postgresql/escenario-04-statistics[0m
+[0;34mℹ️ Agregando servicios de monitoreo a docker-compose.yml[0m
+[0;32m✅ Servicios de monitoreo agregados[0m
+[0;32m✅ Configuración de Grafana creada[0m
+[0;32m✅ Escenario escenario-04-statistics corregido[0m
+[0;34mℹ️ Corrigiendo escenario: escenario-05-wal[0m
+[0;34mℹ️ Corrigiendo configuración de Prometheus en /Users/epetters/Documents/GitHub/itti-platform/apuntes/dba_plan/dba-cloud-onprem/07-herramientas-soporte/escenarios-diagnostico/postgresql/escenario-05-wal[0m
+[0;32m✅ Configuración de Prometheus corregida[0m
+[0;34mℹ️ Verificando Docker Compose en /Users/epetters/Documents/GitHub/itti-platform/apuntes/dba_plan/dba-cloud-onprem/07-herramientas-soporte/escenarios-diagnostico/postgresql/escenario-05-wal[0m
+[0;34mℹ️ Agregando servicios de monitoreo a docker-compose.yml[0m
+[0;32m✅ Servicios de monitoreo agregados[0m
+[0;32m✅ Configuración de Grafana creada[0m
+[0;32m✅ Escenario escenario-05-wal corregido[0m
+[0;34mℹ️ Procesando escenarios de mongodb[0m
+[0;34mℹ️ Corrigiendo escenario: escenario-01-sharding[0m
+[0;34mℹ️ Corrigiendo configuración de Prometheus en /Users/epetters/Documents/GitHub/itti-platform/apuntes/dba_plan/dba-cloud-onprem/07-herramientas-soporte/escenarios-diagnostico/mongodb/escenario-01-sharding[0m
+[0;32m✅ Configuración de Prometheus corregida[0m
+[0;34mℹ️ Verificando Docker Compose en /Users/epetters/Documents/GitHub/itti-platform/apuntes/dba_plan/dba-cloud-onprem/07-herramientas-soporte/escenarios-diagnostico/mongodb/escenario-01-sharding[0m
+[0;34mℹ️ Agregando servicios de monitoreo a docker-compose.yml[0m
+[0;32m✅ Servicios de monitoreo agregados[0m
+[0;32m✅ Configuración de Grafana creada[0m
+[0;32m✅ Escenario escenario-01-sharding corregido[0m
+[0;34mℹ️ Corrigiendo escenario: escenario-02-indexing[0m
+[0;34mℹ️ Corrigiendo configuración de Prometheus en /Users/epetters/Documents/GitHub/itti-platform/apuntes/dba_plan/dba-cloud-onprem/07-herramientas-soporte/escenarios-diagnostico/mongodb/escenario-02-indexing[0m
+[0;32m✅ Configuración de Prometheus corregida[0m
+[0;34mℹ️ Verificando Docker Compose en /Users/epetters/Documents/GitHub/itti-platform/apuntes/dba_plan/dba-cloud-onprem/07-herramientas-soporte/escenarios-diagnostico/mongodb/escenario-02-indexing[0m
+[0;34mℹ️ Agregando servicios de monitoreo a docker-compose.yml[0m
+[0;32m✅ Servicios de monitoreo agregados[0m
+[0;32m✅ Configuración de Grafana creada[0m
+[0;32m✅ Escenario escenario-02-indexing corregido[0m
+[0;34mℹ️ Corrigiendo escenario: escenario-03-replica-set[0m
+[0;34mℹ️ Corrigiendo configuración de Prometheus en /Users/epetters/Documents/GitHub/itti-platform/apuntes/dba_plan/dba-cloud-onprem/07-herramientas-soporte/escenarios-diagnostico/mongodb/escenario-03-replica-set[0m
+[0;32m✅ Configuración de Prometheus corregida[0m
+[0;34mℹ️ Verificando Docker Compose en /Users/epetters/Documents/GitHub/itti-platform/apuntes/dba_plan/dba-cloud-onprem/07-herramientas-soporte/escenarios-diagnostico/mongodb/escenario-03-replica-set[0m
+[0;34mℹ️ Agregando servicios de monitoreo a docker-compose.yml[0m
+[0;32m✅ Servicios de monitoreo agregados[0m
+[0;32m✅ Configuración de Grafana creada[0m
+[0;32m✅ Escenario escenario-03-replica-set corregido[0m
+[0;34mℹ️ Corrigiendo escenario: escenario-04-aggregation[0m
+[0;34mℹ️ Corrigiendo configuración de Prometheus en /Users/epetters/Documents/GitHub/itti-platform/apuntes/dba_plan/dba-cloud-onprem/07-herramientas-soporte/escenarios-diagnostico/mongodb/escenario-04-aggregation[0m
+[0;32m✅ Configuración de Prometheus corregida[0m
+[0;34mℹ️ Verificando Docker Compose en /Users/epetters/Documents/GitHub/itti-platform/apuntes/dba_plan/dba-cloud-onprem/07-herramientas-soporte/escenarios-diagnostico/mongodb/escenario-04-aggregation[0m
+[0;34mℹ️ Agregando servicios de monitoreo a docker-compose.yml[0m
+[0;32m✅ Servicios de monitoreo agregados[0m
+[0;32m✅ Configuración de Grafana creada[0m
+[0;32m✅ Escenario escenario-04-aggregation corregido[0m
+[0;34mℹ️ Corrigiendo escenario: escenario-05-storage[0m
+[0;34mℹ️ Corrigiendo configuración de Prometheus en /Users/epetters/Documents/GitHub/itti-platform/apuntes/dba_plan/dba-cloud-onprem/07-herramientas-soporte/escenarios-diagnostico/mongodb/escenario-05-storage[0m
+[0;32m✅ Configuración de Prometheus corregida[0m
+[0;34mℹ️ Verificando Docker Compose en /Users/epetters/Documents/GitHub/itti-platform/apuntes/dba_plan/dba-cloud-onprem/07-herramientas-soporte/escenarios-diagnostico/mongodb/escenario-05-storage[0m
+[0;34mℹ️ Agregando servicios de monitoreo a docker-compose.yml[0m
+[0;32m✅ Servicios de monitoreo agregados[0m
+[0;32m✅ Configuración de Grafana creada[0m
+[0;32m✅ Escenario escenario-05-storage corregido[0m
+============================================================================
+📊 RESUMEN DE CORRECCIÓN
+============================================================================
+Total de escenarios procesados: 15
+Escenarios corregidos: 15
+Tasa de éxito: 100%
+
+📄 Log detallado: /Users/epetters/Documents/GitHub/itti-platform/apuntes/dba_plan/dba-cloud-onprem/07-herramientas-soporte/scripts-utilitarios/correccion-20250808-174711.log
+
+[0;32m✅ ✅ Todos los escenarios han sido corregidos exitosamente[0m
+[0;34mℹ️ Ejecuta el script de validación nuevamente para verificar:[0m
+[0;34mℹ️ ./validar-funcionalidad-escenarios.sh[0m
